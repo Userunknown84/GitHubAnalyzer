@@ -8,8 +8,7 @@ Turn any GitHub profile into a recruiter-ready proof of skills and activity.
 Watch the live demo of the app here:
 [Click here to watch](https://drive.google.com/file/d/1UKdEXchZTuUArkcjrVXGMEluVOtUkWNJ/view?usp=sharing)
 
-## Deployment Link
-[Live](https://git-hub-analyzer-chi.vercel.app/)
+
 
 ## 📌 Features
 
