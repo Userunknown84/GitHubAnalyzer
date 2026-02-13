@@ -1,7 +1,6 @@
 import React from "react";
 
 function ScoreCard({ user, score, languages, metrics }) {
-  // Determine score level
   const getScoreLevel = (score) => {
     if (score < 40) return "Beginner";
     if (score < 60) return "Intermediate";

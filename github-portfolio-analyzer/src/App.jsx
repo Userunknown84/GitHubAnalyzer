@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import ScoreCard from "./components/ScoreCard";
 import Suggestions from "./components/Suggestions";
+import { fetchGitHubData } from "./services/githubService";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -15,7 +16,6 @@ function App() {
     setError("");
     let cleanUsername = username.trim();
 
-    // Agar GitHub URL paste kiya hai
     if (username.includes("github.com")) {
       const parts = username.split("/");
       cleanUsername = parts[3] || cleanUsername;
@@ -25,10 +25,7 @@ function App() {
     setData(null);
 
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/github/portfolio/${cleanUsername}`
-      );
-      const result = await res.json();
+      const result = await fetchGitHubData(cleanUsername);
 
       if (!result.success) {
         setError(result.message || "User not found");

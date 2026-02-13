@@ -66,7 +66,6 @@ export async function analyzePortfolio(username) {
   const user = res.data.data.user;
   if (!user) return null;
 
-  // 🔥 METRIC CALCULATIONS
   let totalStars = 0;
   let totalForks = 0;
   let totalCommits = 0;
@@ -99,43 +98,43 @@ export async function analyzePortfolio(username) {
   const pinnedCount = user.pinnedItems.nodes.length;
   const languageDiversity = Object.keys(languages).length;
 
-  // 🎯 ADVANCED SCORE CALCULATION (100 based)
+ 
   let score = 0;
 
-  // Repository strength (20)
+  
   if (totalRepos >= 5) score += 10;
   if (totalRepos >= 10) score += 10;
 
-  // Followers (15)
+  
   if (user.followers.totalCount >= 5) score += 7;
   if (user.followers.totalCount >= 20) score += 8;
 
-  // Stars impact (15)
+ 
   if (totalStars > 0) score += 5;
   if (totalStars > 10) score += 10;
 
-  // README quality (15)
+
   const readmeRatio = totalRepos > 0 ? readmeCount / totalRepos : 0;
   if (readmeRatio > 0.5) score += 7;
   if (readmeRatio > 0.8) score += 8;
 
-  // Commit consistency (15)
+
   if (totalCommits > 20) score += 7;
   if (totalCommits > 50) score += 8;
 
-  // Language diversity (10)
+ 
   if (languageDiversity >= 3) score += 5;
   if (languageDiversity >= 5) score += 5;
 
-  // Issues & PR activity (10)
+
   if (totalIssues > 0 || totalPRs > 0) score += 5;
   if (totalIssues > 10 || totalPRs > 10) score += 5;
 
-  // Pinned repos (10)
+
   if (pinnedCount >= 3) score += 5;
   if (pinnedCount >= 5) score += 5;
 
-  // 💡 SUGGESTIONS ENGINE
+
   let suggestions = [];
 
   if (totalRepos < 5)
@@ -161,7 +160,7 @@ export async function analyzePortfolio(username) {
 
   const responseTime = Date.now() - startTime;
 
-  // 🔥 FINAL RESPONSE STRUCTURE
+
   return {
     userData: {
       login: user.login,

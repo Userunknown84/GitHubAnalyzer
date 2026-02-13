@@ -3,17 +3,9 @@ import { analyzePortfolio } from "../services/github.service.js";
 
 const router = express.Router();
 
-/*
-  =========================================
-  🔍 GET GitHub Portfolio Analysis
-  =========================================
-  Endpoint:
-  /api/github/portfolio/:username
-*/
 router.get("/portfolio/:username", async (req, res) => {
   const { username } = req.params;
 
-  // 🔎 Basic validation
   if (!username || username.trim() === "") {
     return res.status(400).json({
       success: false,
@@ -46,11 +38,6 @@ router.get("/portfolio/:username", async (req, res) => {
   }
 });
 
-/*
-  =========================================
-  ❤️ Health Check Route
-  =========================================
-*/
 router.get("/health", (req, res) => {
   return res.status(200).json({
     status: "Server is running 🚀",
