@@ -38,6 +38,10 @@ router.get("/portfolio/:username", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  res.json({ success: true, message: "Github API hit!" });
+});
+
 router.get("/health", (req, res) => {
   return res.status(200).json({
     status: "Server is running 🚀",

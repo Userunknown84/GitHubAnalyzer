@@ -8,16 +8,12 @@ dotenv.config();
 const app = express();
 
 
-app.use(cors({
-  origin: "*", 
-}));
+app.use(cors({ origin: "*" }));
+
 
 app.use(express.json());
 
-
-
 app.use("/api/github", githubRoutes);
-
 
 
 app.get("/health", (req, res) => {
@@ -28,7 +24,6 @@ app.get("/health", (req, res) => {
 });
 
 
-
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -37,10 +32,8 @@ app.use((req, res) => {
 });
 
 
-
 app.use((err, req, res, next) => {
   console.error("Server Error:", err.stack);
-
   res.status(500).json({
     success: false,
     message: "Internal Server Error",
@@ -49,7 +42,6 @@ app.use((err, req, res, next) => {
 
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`🚀 Ultra Fast Server running on port ${PORT}`);
 });
