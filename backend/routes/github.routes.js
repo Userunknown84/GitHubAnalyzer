@@ -3,6 +3,7 @@ import { analyzePortfolio } from "../services/github.service.js";
 
 const router = express.Router();
 
+
 router.get("/portfolio/:username", async (req, res) => {
   const { username } = req.params;
 
@@ -27,7 +28,6 @@ router.get("/portfolio/:username", async (req, res) => {
       success: true,
       data: result,
     });
-
   } catch (error) {
     console.error("❌ Portfolio Analysis Error:", error.message);
 
@@ -38,9 +38,14 @@ router.get("/portfolio/:username", async (req, res) => {
   }
 });
 
+
 router.post("/", async (req, res) => {
-  res.json({ success: true, message: "Github API hit!" });
+  return res.status(200).json({
+    success: true,
+    message: "Github API hit successfully!",
+  });
 });
+
 
 router.get("/health", (req, res) => {
   return res.status(200).json({
